@@ -1,6 +1,6 @@
 import requests as rq
 
-def get_api_data(location, number_of_days, option):
+def get_api_data(location, number_of_days):
     
     api_key = '41228a6613ea78803ae4b65bddcf6b1a'
     city_name = location
@@ -10,15 +10,10 @@ def get_api_data(location, number_of_days, option):
     data = response.json()
     print(data)
     complete_weather_data = data['list']                                #isolate relevant weather data
-    requested_weather_data = complete_weather_data[:8*number_of_days]   #create a dataset based on the number of days requested by user
-   # temp_list = []
-   # date_list = []
-    if option == 'Temperature':
-        temp_list = [dict['main']['temp'] for dict in requested_weather_data]
-        date_list = [dict['dt_txt'] for dict in requested_weather_data]
+    working_dataset = complete_weather_data[:8*number_of_days]   #create a dataset based on the number of days requested by user
 
-    return temp_list, date_list
+    return working_dataset
 
 if __name__ == '__main__':
-    t, d = get_api_data(location='Tokyo',number_of_days=3,option='Temperature')
-    #print(t)
+    display_data = get_api_data(location='Tokyo',number_of_days=3)
+    print(display_data)
