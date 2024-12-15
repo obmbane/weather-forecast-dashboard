@@ -6,6 +6,10 @@ from backend import get_api_data
 st.title("Weather Forcast Dashboard")
 st.write('By Olwethu Mbane')
 st.write('')
+content = """
+This app provides a 3-hourly weather forecast for up 5-days
+"""
+st.info(content)
 
 location = st.text_input(label="Location:",key='location').capitalize()
 days_slider = st.slider('Forcast Days', max_value=5, min_value=2,help="Slide to select number of days to forecast")
