@@ -8,7 +8,6 @@ def get_api_data(location, number_of_days):
     response = rq.get(url)
 
     data = response.json()
-    print(data)
     complete_weather_data = data['list']                                #isolate relevant weather data
     working_dataset = complete_weather_data[:8*number_of_days]   #create a dataset based on the number of days requested by user
 
